@@ -7,5 +7,7 @@ COPY . .
 RUN go build
 
 FROM alpine:3.18.3
+ENV MY_CONFIG_PATH=/genesis.conf
+COPY genesis.conf /genesis.conf 
 COPY --from=builder /src/backend-scraper /backend-scraper
 ENTRYPOINT [ "/backend-scraper" ]
